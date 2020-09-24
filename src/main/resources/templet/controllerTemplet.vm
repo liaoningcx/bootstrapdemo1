@@ -1,0 +1,187 @@
+package $!{packageBasePath}.controller;
+
+import com.auto.common.CommonResponse;
+import com.auto.common.Page;
+
+import $!{packageBasePath}.service.$!{domainClassNameEN}Service;
+import $!{packageBasePath}.domain. $!{domainClassNameEN};
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
+/**
+ * $!{tableComment}的Controller实现
+ * User: $!{author}
+ * DateTime: $!{makeDateTime}
+ **/
+@Controller
+@RequestMapping("/$!{domainPropertyNameEN}")
+public class $!{domainClassNameEN}Controller {
+
+    @Autowired
+    private $!{domainClassNameEN}Service $!{domainPropertyNameEN}Service;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String main(Model model, HttpServletResponse response) {
+        model.addAttribute("testAttr", "测试属性");
+        return "index";
+    }
+
+    @RequestMapping(value = "/$!{domainPropertyNameEN}View", method = RequestMethod.GET)
+    public String $!{domainPropertyNameEN}View(Model model, HttpServletResponse response) {
+        return "$!{domainPropertyNameEN}View";
+    }
+
+    /**
+    * 查询所有$!{tableComment}
+    * @param model
+    * @param response
+    * @return $!{tableComment}结果
+    */
+    @ResponseBody
+    @RequestMapping(value = "/query$!{domainClassNameEN}", method = {RequestMethod.GET,RequestMethod.POST})
+    public CommonResponse query$!{domainClassNameEN}(Model model, HttpServletResponse response) {
+        CommonResponse<List<$!{domainClassNameEN}>> commonResponse = new CommonResponse<List<$!{domainClassNameEN}>>();
+        try {
+            $!{domainClassNameEN} query = new $!{domainClassNameEN}();
+            List<$!{domainClassNameEN}> $!{domainPropertyNameEN}List = $!{domainPropertyNameEN}Service.select(query);
+            commonResponse.setData($!{domainPropertyNameEN}List);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return commonResponse;
+    }
+
+    /**
+    * 分页查询$!{tableComment}
+    * @param model
+    * @param response
+    * @return $!{tableComment}结果
+    */
+    @ResponseBody
+    @RequestMapping(value = "/find$!{domainClassNameEN}", method = {RequestMethod.GET,RequestMethod.POST})
+    public CommonResponse find$!{domainClassNameEN}(Model model, HttpServletResponse response) {
+        CommonResponse<Page<$!{domainClassNameEN}>> commonResponse = new CommonResponse<Page<$!{domainClassNameEN}>>();
+        try {
+            $!{domainClassNameEN} query = new $!{domainClassNameEN}();
+            Page<$!{domainClassNameEN}> $!{domainPropertyNameEN}Page = $!{domainPropertyNameEN}Service.find$!{domainClassNameEN}Page(query);
+            commonResponse.setData($!{domainPropertyNameEN}Page);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return commonResponse;
+    }
+
+    /**
+    * 删除$!{tableComment}
+    * @param request
+    * @return
+    */
+    @ResponseBody
+    @RequestMapping(value = "/del$!{domainClassNameEN}By$!{pkColumn.columnClassName}", method = {RequestMethod.GET,RequestMethod.POST})
+    public CommonResponse del$!{domainClassNameEN}By$!{pkColumn.columnClassName}(HttpServletRequest request) {
+        CommonResponse<$!{domainClassNameEN}> commonResponse = new CommonResponse<$!{domainClassNameEN}>();
+        try {
+            $!{pkColumn.columnClassType} $!{pkColumn.columnClassName} = ($!{pkColumn.columnClassType})request.getParameter("$!{pkColumn.columnClassName}");
+            $!{domainPropertyNameEN}Service.deleteByID($!{pkColumn.columnClassName});
+            commonResponse.setCode(CommonResponse.CODE_OK);
+            commonResponse.setMessage(CommonResponse.MESSAGE_OK);
+        }catch (Exception ex){
+            commonResponse.setCode(CommonResponse.CODE_FAILED);
+            commonResponse.setMessage(CommonResponse.MESSAGE_FAILED);
+            ex.printStackTrace();
+        }
+        return commonResponse;
+    }
+
+    /**
+    * 显示添加$!{tableComment}页面
+    * @param model
+    * @param response
+    * @return
+    */
+    @RequestMapping(value = "/showIns$!{domainClassNameEN}View", method = {RequestMethod.GET,RequestMethod.POST})
+    public String showIns$!{domainClassNameEN}View(Model model, HttpServletResponse response) {
+        return "$!{domainPropertyNameEN}ViewIns";
+    }
+
+    /**
+    * 添加$!{tableComment}
+    * @param request
+    * @return
+    */
+    @ResponseBody
+    @RequestMapping(value = "/insert$!{domainClassNameEN}", method = {RequestMethod.GET,RequestMethod.POST})
+    public CommonResponse insert$!{domainClassNameEN}(HttpServletRequest request) {
+        CommonResponse commonResponse = new CommonResponse();
+        $!{domainClassNameEN} $!{domainPropertyNameEN} = ($!{domainClassNameEN})request.getAttribute("$!{domainPropertyNameEN}");
+        try {
+            $!{domainPropertyNameEN}Service.insert($!{domainPropertyNameEN});
+            commonResponse.setCode(CommonResponse.CODE_OK);
+            commonResponse.setMessage(CommonResponse.MESSAGE_OK);
+        } catch (Exception e) {
+            commonResponse.setCode(CommonResponse.CODE_EXCEPTION);
+            commonResponse.setMessage(CommonResponse.MESSAGE_EXCEPTION);
+            e.printStackTrace();
+        }
+        return commonResponse;
+    }
+
+    /**
+    * 显示修改$!{tableComment}页面
+    * @param model
+    * @param response
+    * @param id
+    * @return
+    */
+    @RequestMapping(value = "/showMod$!{domainClassNameEN}View", method = {RequestMethod.GET,RequestMethod.POST})
+    public String mod$!{domainClassNameEN}(Model model, HttpServletResponse response,String id) {
+        $!{domainClassNameEN} $!{domainPropertyNameEN} = new $!{domainClassNameEN}();
+        $!{domainPropertyNameEN}.set$!{pkColumn.columnClassName}(id);
+        try {
+            List<$!{domainClassNameEN}> $!{domainPropertyNameEN}List = $!{domainPropertyNameEN}Service.select($!{domainPropertyNameEN});
+            if($!{domainPropertyNameEN}List!=null&&$!{domainPropertyNameEN}List.size()>0){
+                $!{domainPropertyNameEN} = $!{domainPropertyNameEN}List.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("$!{domainPropertyNameEN}",$!{domainPropertyNameEN});
+        return "$!{domainPropertyNameEN}ViewMod";
+    }
+
+    /**
+    * 修改$!{tableComment}
+    * @param request
+    * @return
+    */
+    @ResponseBody
+    @RequestMapping(value = "/modify$!{domainClassNameEN}", method = {RequestMethod.GET,RequestMethod.POST})
+    public CommonResponse modify$!{domainClassNameEN}(HttpServletRequest request) {
+        CommonResponse commonResponse = new CommonResponse();
+        $!{domainClassNameEN} $!{domainPropertyNameEN} = new $!{domainClassNameEN}();
+        try {
+            $!{domainPropertyNameEN}.set$!{pkColumn.columnClassName}(request.getParameter("$!{pkColumn.columnClassName}"));
+        #foreach(${basicColumn} in ${basicColumnList})
+            $!{domainPropertyNameEN}.set$!{basicColumn.columnClassName}(request.getParameter("$!{domainPropertyNameEN}[$!{basicColumn.columnClassName}]"));
+        #end
+            $!{domainPropertyNameEN}Service.updateByID($!{domainPropertyNameEN});
+            commonResponse.setCode(CommonResponse.CODE_OK);
+            commonResponse.setMessage(CommonResponse.MESSAGE_OK);
+        } catch (Exception e) {
+            commonResponse.setCode(CommonResponse.CODE_EXCEPTION);
+            commonResponse.setMessage(CommonResponse.MESSAGE_EXCEPTION);
+            e.printStackTrace();
+        }
+        return commonResponse;
+    }
+
+}

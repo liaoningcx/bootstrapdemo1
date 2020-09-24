@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tools>
+    <class name="BaseDao" package="com.mic.bpm.platform.common.dao.BaseDao" desc="Mybatis通用Dao"></class>
+    <class name="PageBean" package="com.mic.bpm.platform.common.dao.PageBean" desc="分页处理类"></class>
+</tools>

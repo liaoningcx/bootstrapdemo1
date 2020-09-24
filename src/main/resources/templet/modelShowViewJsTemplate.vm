@@ -1,0 +1,74 @@
+//当前页
+var currentPage = 1;
+
+$(document).ready(function(){
+    $("#btn_search").bind("click",function(){
+        var val = "qerw";
+        alert("查询开始！");
+        toQuery(val);
+    })
+})
+
+function toQuery(po) {
+    clearData();
+    //jQuery.blockUI({message: "正在查询数据，请稍候..."});
+    jQuery.post(
+        '/find$!{domainClassNameEN}',
+        {
+            'po': po
+        },
+        function (result) {
+            //jQuery.unblockUI();
+            if (result.code == 200) {
+                showPageInfo(result.data);
+            } else {
+                alert("错误！" + result.message);
+            }
+        }
+    );
+}
+
+
+//清除上次数据
+function clearData() {
+    $("#tbodyGrid").html("");
+}
+
+function showPageInfo(pageInfo) {
+    if(pageInfo == null||pageInfo.result==null||pageInfo.result.length==0){
+        alert("查询为空！")
+        return;
+        }
+    showDateArray(pageInfo.result);
+    PageBar.fillHtml("gotoCurrentPage", "pageDiv", pageInfo);//填充分页框
+}
+
+function del$!{domainClassNameEN}(id){
+    jQuery.post(
+        '/del$!{domainClassNameEN}',
+        {
+            '$!{pkColumn.columnClassName}': id
+        },
+        function (result) {
+            //jQuery.unblockUI();
+            if (result.code == 200) {
+                alert("成功！")
+            } else {
+                alert("错误！" + result.message);
+            }
+        }
+    );
+}
+
+function showDateArray(dataArray) {
+    for(var i=0 ;i<dataArray.length;i++){
+        var str = "<tr id=" + dataArray[i].$!{pkColumn.columnClassName} + ">";
+            str += "<td align='center'><a href='showMod$!{domainClassNameEN}View?id="+dataArray[i].$!{pkColumn.columnClassName}+"'>修改</a>"+"<a href='#' onclick='del$!{domainClassNameEN}("+dataArray[i].$!{pkColumn.columnClassName}+")'>删除</a>"+"</td>";
+        #foreach(${basicColumn} in ${basicColumnList})
+            str += "<td>" + dataArray[i].$!{basicColumn.columnClassName} + "</td>";
+        #end
+            str += "<td style='display: none;'>" + dataArray[i].$!{pkColumn.columnClassName} + "</td>";
+            str += "</tr>";
+        $("#tbodyGrid").append(str);
+    }
+}

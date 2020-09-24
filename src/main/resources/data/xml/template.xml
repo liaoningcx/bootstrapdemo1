@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  template.xml模板说明 ： flag，code，name为这个template的名称和标识，templatePath加上templateName是确认vm模板的位置，filePath加上fileName是确定根据vm模板生成的项目文件放置在哪里  -->
+<templates>
+    <template flag="bussiness" code="sqlMapperTemplet" name="sqlmapper模板" templatePath="/resources/mybatis" templateName="sqlMapperTemplet.vm" filePath="mappers" fileName="Mapper.xml"/>
+    <template flag="bussiness" code="daoTemplet" name="dao模板" templatePath="/java/com/auto" templateName="daoTemplet.vm" filePath="dao" fileName="Dao.java"/>
+    <!--<template flag="bussiness" code="daoImplTemplet" name="daoImpl模板" templatePath="/java/com/auto" templateName="daoImplTemplet.vm" filePath="dao/impl" fileName="DaoImpl.java" />-->
+    <template flag="bussiness" code="serviceTemplet" name="service模板" templatePath="/java/com/auto" templateName="serviceTemplet.vm" filePath="service" fileName="Service.java"/>
+    <template flag="bussiness" code="serviceImplTemplet" name="serviceImpl模板" templatePath="/java/com/auto" templateName="serviceImplTemplet.vm" filePath="service/impl" fileName="ServiceImpl.java"/>
+    <template flag="bussiness" code="domainTemplet" name="实体类" templatePath="/java/com/auto" templateName="domainTemplet.vm" filePath="domain" fileName=".java"/>
+    <template flag="bussiness" code="controllerTemplet" name="Controller模板" templatePath="/java/com/auto" templateName="controllerTemplet.vm" filePath="controller" fileName="Controller.java"/>
+
+    <!--基础springmvc框架-->
+    <template flag="frame" code="pomxmlTemplate" name="pom框架" templatePath="../../" templateName="pomxmlTemplate.vm" filePath="/" fileName="pom.xml"/>
+    <!--基础web服务启动文件 ：web.xml-->
+    <template flag="frame" code="webxmlTemplate" name="web启动" templatePath="/webapp/WEB-INF/" templateName="webxmlTemplate.vm" filePath="/" fileName="web.xml"/>
+
+    <!--mybatis配置文件-->
+    <template flag="frame" code="mybatisconfigTemplate" name="mybatis模板" templatePath="/resources/mybatis" templateName="mybatisConfigTemplate.vm" filePath="/" fileName="mybatis-config.xml"/>
+    <!--spring配置文件-->
+    <template flag="frame" code="springconfigTemplate" name="spring模板" templatePath="/resources/spring" templateName="springConfigTemplate.vm" filePath="/" fileName="spring-config.xml"/>
+    <template flag="frame" code="springConfigDaoTemplate" name="springDao模板" templatePath="/resources/spring" templateName="springConfigDaoTemplate.vm" filePath="/" fileName="spring-config-dao.xml"/>
+    <template flag="frame" code="springConfigDatasourceDbcpTemplate" name="springDBCP模板" templatePath="/resources/spring" templateName="springConfigDatasourceDbcpTemplate.vm" filePath="/" fileName="spring-config-datasource-dbcp.xml"/>
+    <template flag="frame" code="springConfigManagerTemplate" name="springManager模板" templatePath="/resources/spring" templateName="springConfigManagerTemplate.vm" filePath="/" fileName="spring-config-manager.xml"/>
+    <template flag="frame" code="springConfigServiceTemplate" name="springService模板" templatePath="/resources/spring" templateName="springConfigServiceTemplate.vm" filePath="/" fileName="spring-config-service.xml"/>
+    <template flag="frame" code="springConfigMVCTemplate" name="springMVC模板" templatePath="/resources/spring" templateName="springConfigMVCTemplate.vm" filePath="/" fileName="spring-config-mvc.xml"/>
+
+    <!--web端-->
+    <template flag="webvm" code="modelShowViewTemplate" name="modelShowViewTemplate模板" templatePath="/webapp/WEB-INF/views" templateName="modelShowViewTemplate.vm" filePath="/" fileName="View.vm"/>
+    <template flag="webvm" code="modelViewInsTemplate" name="modelViewInsTemplate模板" templatePath="/webapp/WEB-INF/views" templateName="modelViewInsTemplate.vm" filePath="/" fileName="ViewIns.vm"/>
+    <template flag="webvm" code="modelViewModTemplate" name="modelViewModTemplate模板" templatePath="/webapp/WEB-INF/views" templateName="modelViewModTemplate.vm" filePath="/" fileName="ViewMod.vm"/>
+
+    <!--web端js模块-->
+    <template flag="webjs" code="modelShowViewJsTemplate" name="modelShowViewJsTemplate模板" templatePath="/webapp/static/js" templateName="modelShowViewJsTemplate.vm" filePath="/" fileName="View.js"/>
+    <template flag="webjs" code="modelViewInsJsTemplate" name="modelViewInsJsTemplate模板" templatePath="/webapp/static/js" templateName="modelViewInsJsTemplate.vm" filePath="/" fileName="ViewIns.js"/>
+    <template flag="webjs" code="modelViewModJsTemplate" name="modelViewModJsTemplate模板" templatePath="/webapp/static/js" templateName="modelViewModJsTemplate.vm" filePath="/" fileName="ViewMod.js"/>
+
+    <!--web初始页-->
+    <!--<template flag="webinitvm" code="indexViewTemplate" name="indexViewTemplate模板" templatePath="/webapp/WEB-INF" templateName="indexViewTemplate.vm" filePath="/views" fileName="index.vm"/>-->
+
+
+</templates>

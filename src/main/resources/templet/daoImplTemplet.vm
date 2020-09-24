@@ -1,0 +1,89 @@
+package $!{packageBasePath}.dao.impl;
+
+import org.springframework.stereotype.Component;
+import com.auto.common.BaseDao;
+import $!{packageBasePath}.domain.$!{domainClassNameEN};
+import $!{packageBasePath}.dao.$!{domainClassNameEN}Dao;
+
+//功能实现类
+#if(${extendsClassList})
+    #foreach(${extendsClass} in ${extendsClassList})
+import ${extendsClass.packageBasePath}.${extendsClass.className};
+    #end
+#end
+
+import java.util.List;
+
+/**
+ * $!{tableComment}Dao层实现类
+ * User: $!{author}
+ * DateTime: $!{makeDateTime}
+ **/
+@Component
+public class $!{domainClassNameEN}DaoImpl extends BaseDao<$!{domainClassNameEN}> implements $!{domainClassNameEN}Dao{
+
+    public static final String NAME_SPACE = "$!{packageBasePath}.dao.$!{domainClassNameEN}Dao";             //sqlMap命名空间
+
+    /**
+     * 添加$!{tableComment}信息
+     * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+     */
+    public boolean insert($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        return this.insert(getNamespace("insert"), $!{domainPropertyNameEN});
+    }
+
+    /**
+     * 通过主键修改$!{tableComment}
+     * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+     */
+    public boolean updateByID($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        return this.update(getNamespace("updateByID"), $!{domainPropertyNameEN});
+    }
+
+    /**
+    * 根据主键删除$!{tableComment}
+    * @param $!{domainPropertyNameEN}$!{pkColumn.columnClassName} $!{tableComment}Domain
+    */
+    public boolean deleteByID($!{pkColumn.columnClassType} $!{domainPropertyNameEN}$!{pkColumn.columnClassName}) throws Exception{
+        $!{domainClassNameEN} $!{domainPropertyNameEN} = new $!{domainClassNameEN}();
+        $!{domainPropertyNameEN}.set$!{pkColumn.columnClassName}($!{domainPropertyNameEN}$!{pkColumn.columnClassName});
+        $!{domainPropertyNameEN}.set$!{deleteFlagColumn.columnClassName}(0);
+        return this.update(getNamespace("deleteByID"), $!{domainPropertyNameEN});
+    }
+
+    /**
+    * 根据主键批量删除$!{tableComment}
+    * @param $!{domainPropertyNameEN}List $!{tableComment}Domain集合
+    */
+    public boolean deleteBatchByIDList(List<$!{domainClassNameEN}> $!{domainPropertyNameEN}List) throws Exception{
+        return this.update(getNamespace("deleteBatchByIDList"), $!{domainPropertyNameEN}List);
+    }
+
+    /**
+     * 查询$!{tableComment}列表
+     * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+     * @return $!{tableComment}列表
+     */
+    public List<$!{domainClassNameEN}> select( $!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        return this.queryForList(getNamespace("select"), $!{domainPropertyNameEN});
+    }
+
+    /**
+    * 查询$!{tableComment}列表
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    * @return $!{tableComment}列表个数
+    */
+    public int selectCount($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        return this.queryForList(getNamespace("selectCount"), $!{domainPropertyNameEN}).size();
+    }
+
+    /**
+     * mybatis的namespace
+     * @param statement
+     * @return 命名空间
+     */
+    private String getNamespace(String statement) {
+        return NAME_SPACE + "." + statement;
+    }
+
+}

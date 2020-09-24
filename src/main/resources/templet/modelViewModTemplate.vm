@@ -1,0 +1,25 @@
+<div id="right-content">
+	 <div class="steps mb10">
+		 <ul class="steps-1 clearfix">
+			 <li class=""><a href="#">自动工程看看好使不修改</a></li>
+		 </ul>
+	 </div>
+	<input id="$!{pkColumn.columnClassName}" value="${$!{domainPropertyNameEN}.$!{pkColumn.columnClassName}}" type="hidden"></input>
+	 <div class="modify-view" style="height:auto;">
+		 <form id="toCodeForm" method="post" onsubmit="return   false ">
+			 #foreach(${basicColumn} in ${basicColumnList})
+                 <div class="textL">$!{basicColumn.columnSQLComment} ：<input type="text" class="textField28 modify-view-input" id="$!{basicColumn.columnClassName}" value="$!{$!{domainPropertyNameEN}.$!{basicColumn.columnClassName}}"/></div>
+			 #end
+		 </form>
+	 </div>
+	 <div class="data-table-footer clearfix" align="center">
+		 <a class="btn btn-3 " onclick="modify$!{domainClassNameEN}()"
+			href="javascript:void(0);">&ensp;<span id="spanPrintOrder"><em id="txtPrintOrder">修改</em></span>
+		 </a>
+		 <a class="btn btn-3 " onclick="cancel$!{domainClassNameEN}()"
+			href="javascript:void(0);">&ensp;<span><em>返回</em></span>
+		 </a>
+	 </div>
+
+</div>
+<script type="text/javascript" src="#springUrl('')/static/js/$!{domainPropertyNameEN}/$!{domainPropertyNameEN}ViewMod.js"></script>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <!-- MYSQL元数据 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${code-micmsg.jdbc.driver}"/>
+        <property name="url" value="${code-micmsg.jdbc.url}"/>
+        <property name="username" value="${code-micmsg.jdbc.username}"/>
+        <property name="password" value="${code-micmsg.jdbc.password}"/>
+    </bean>
+</beans>

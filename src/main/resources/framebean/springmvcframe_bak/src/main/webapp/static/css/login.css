@@ -1,0 +1,133 @@
+﻿/**
+ * 大家电
+ * 
+ * 登陆页面
+ * 
+ * @project 360buy 
+ * @version 1.0
+ * @author  Fengweiping
+ * @copyright 2012 360buy
+ * 
+ */
+*{
+	padding:0;
+	margin:0;
+}
+html,body{
+	background:url(i/login-html-BG.jpg) repeat-x 0 0 #6fc9fb;
+	font-family:Verdana,"微软雅黑";
+	color:#fff;
+	font-size: 12px;
+}
+#login{
+	width:1210px;
+	height:800px;
+	margin:0 auto;
+	background:url(i/loginBG.jpg) no-repeat 0 0;
+}
+#login #logo{
+	padding:30px 0 10px;
+}
+#login #logo a{
+    background: url("i/loginIco.png") no-repeat scroll 0 -42px transparent;
+    display: inline-block;
+    height: 60px;
+    width: 180px;
+    text-indent:-9999px;
+}
+#login #loginForm{
+	margin: 116px 0 140px 386px;
+    width: 445px;
+    height:295px;
+}
+#login #footer{
+	text-align:center;
+}
+#login #errorMsg{
+    height:35px;
+    text-align:center;
+}
+#login #errorMsg .errorTxt{
+	display: inline-block;
+    border:1px solid #ff8080;
+    color:#333;
+    background: url("i/loginIco.png") no-repeat 0 -107px #fff2f2;
+    margin:6px 0;
+    padding:3px 3px 3px 25px;
+}
+#login h1.tit{
+	text-align:center;
+	font-weight: normal;
+	*font-weight: bold;
+	font-size: 24px;
+	padding: 18px 0;
+}
+#login label{
+	display: inline-block;
+	height:30px;
+	line-height:30px;
+	width:126px;
+	text-align:right;
+	font-size: 14px;
+	font-family:Verdana,"宋体";
+	font-weight: bold;
+	vertical-align: middle;
+}
+#login input{
+	border:1px solid #c6dae8;
+	background-color: #fff;
+	height:28px;
+	width:198px;
+	line-height:28px;
+	font-size: 14px;
+	padding:0 5px;
+	vertical-align: middle;
+}
+#login input:focus,
+#login input.focus{
+	border:1px solid #ecae37;
+	background-color: #ffeda4;
+}
+#login .identify-code{
+	width:80px;
+}
+#login .identify-img{
+	display: inline-block;
+	width:70px;
+	height:28px;
+	border:1px solid #2e9aeb;
+	line-height:15px;
+	vertical-align: middle;
+	background-color: #DDD;
+	font-size:11px;
+	margin-left:10px;
+}
+#login .identify-img img{
+	border:0;
+	width:70px;
+	height:28px;
+	vertical-align: middle;
+}
+#login .refresh{
+	display: inline-block;
+	width:60px;
+	height:30px;
+	line-height:15px;
+	margin-left:10px;
+	vertical-align: middle;
+	color:#b2ddfd;
+	font-size:11px;
+}
+#login #submit{
+	border:0;
+	display: inline-block;
+	width:105px;
+	height:41px;
+	background:url(i/loginIco.png) no-repeat 0 0;
+	text-indent:-9999px;
+	cursor: pointer;
+}
+#login .listCon{
+	margin-bottom:10px;
+}
+

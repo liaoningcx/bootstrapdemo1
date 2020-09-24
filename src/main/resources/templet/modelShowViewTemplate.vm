@@ -1,0 +1,117 @@
+<div class="main-container ace-save-state" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">第一级菜单</a>
+                    </li>
+                    <li class="active">thirdTestView??!!</li>
+                </ul>
+            </div>
+
+            <div class="page-content">
+            ##                查询条件
+                <form class="form-horizontal" role="form">
+
+                    #foreach(${basicColumn} in ${basicColumnList})
+                        #if($i==3)
+
+                        #end
+                        <td class="textRW"> $!{basicColumn.columnSQLComment}：</td>
+                        <td class="textL" width="200">
+                            <input type="text" class="textField28" id="txt$!{basicColumn.columnClassName}" name="txt$!{basicColumn.columnClassName}"/>
+                        </td>
+                        #set($i=$i+1)
+                    #end
+
+                    <label class="control-label"> 属性1 </label>
+                    <input type="text" id="form-field-1" placeholder="属性1" />
+                    <label class="control-label"> 属性12 </label>
+                    <input type="text" id="form-field-1" placeholder="属性12" />
+                    <label class="control-label"> 属性13 </label>
+                    <input type="text" id="form-field-1" placeholder="属性13" />
+                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                        <span>
+                            <i class="fa fa-search bigger-110 blue"></i>
+                        </span>
+                    </a>
+                </form>
+
+            ##                查询数据显示
+                <table id="simple-table" class="table  table-bordered table-hover">
+                ##表头
+                    <thead>
+                    <tr>
+                        <th class="center">
+                            <label class="pos-rel">
+                                <input type="checkbox" class="ace" />
+                                <span class="lbl"></span>
+                            </label>
+                        </th>
+                        <th>属性1</th>
+                        <th>属性2</th>
+                        <th>属性13</th>
+                        <th class="hidden-480">属性14</th>
+                        <th>
+                            属性15
+                        </th>
+                        <th class="hidden-480">属性16</th>
+                        <th>属性17</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td class="center">
+                            <label class="pos-rel">
+                                <input type="checkbox" class="ace" />
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        <td>
+                            轻轻巧巧
+                        </td>
+                        <td>
+                            <a href="#">;ptdg,kjgky;</a>
+                        </td>
+                        <td>$45</td>
+                        <td class="hidden-480">3,330</td>
+                        <td>Feb 1222</td>
+                        <td class="hidden-480">
+                            <span class="label label-sm label-warning">Expiring</span>
+                        </td>
+                        <td>
+                            <div class="hidden-sm hidden-xs btn-group">
+                                <button class="btn btn-xs btn-success">
+                                    <i class="ace-icon fa fa-check bigger-120"></i>
+                                </button>
+
+                                <button class="btn btn-xs btn-info">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </button>
+
+                                <button class="btn btn-xs btn-danger">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </button>
+
+                                <button class="btn btn-xs btn-warning">
+                                    <i class="ace-icon fa fa-flag bigger-120"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+
+</div>
+
+

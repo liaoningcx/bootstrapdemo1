@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="$!{packageBasePath}.dao.$!{domainClassNameEN}Dao" >
+    <resultMap id="BaseResultMap" type="$!{packageBasePath}.domain.$!{domainClassNameEN}" >
+        <id column="$!{pkColumn.columnSQLName}" property="$!{pkColumn.columnPropertyName}" jdbcType="$!{pkColumn.columnSQLJDBCNameTypeAllCap}" />       <!-- 含义：$!{pkColumn.columnSQLComment} -->
+        <result column="$!{deleteFlagColumn.columnSQLName}" property="$!{deleteFlagColumn.columnPropertyName}" jdbcType="$!{deleteFlagColumn.columnSQLJDBCNameTypeAllCap}" />       <!-- 含义：$!{deleteFlagColumn.columnSQLComment} -->
+#foreach(${basicColumn} in ${basicColumnList})
+        <result column="$!{basicColumn.columnSQLName}" property="$!{basicColumn.columnPropertyName}" jdbcType="$!{basicColumn.columnSQLJDBCNameTypeAllCap}" />     <!-- $!{basicColumn.columnSQLComment} -->
+#end
+
+    </resultMap>
+
+    <!-- 新增$!{tableComment} -->
+    <insert id="insert" parameterType="$!{packageBasePath}.domain.$!{domainClassNameEN}" >
+        INSERT INTO $!{domainPropertyNameEN} (
+#foreach(${basicColumn} in ${basicColumnList})
+            $!{basicColumn.columnSQLName},
+#end
+            $!{deleteFlagColumn.columnSQLName}
+        )
+        VALUES (
+#foreach(${basicColumn} in ${basicColumnList})
+            #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}},
+#end
+            1
+        )
+    </insert>
+
+   <!-- 修改$!{tableComment} -->
+    <update id="updateByID" parameterType="$!{packageBasePath}.domain.$!{domainClassNameEN}" >
+        <if test="_parameter != null and $!{pkColumn.columnClassName} != null">
+        UPDATE $!{domainPropertyNameEN}
+        <set>
+#foreach(${basicColumn} in ${basicColumnList})
+    #if($!{basicColumn.columnSQLJDBCNameTypeAllCap}=="VARCHAR" || $!{basicColumn.columnSQLJDBCNameTypeAllCap}=="CHAR" || $!{basicColumn.columnSQLJDBCNameTypeAllCap}=="TEXT")
+            <if test="$!{basicColumn.columnClassName} != null and $!{basicColumn.columnClassName} != ''" >
+                $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}},
+            </if>
+    #elseif($!{basicColumn.columnSQLJDBCNameTypeAllCap}=="INTEGER")
+            <if test="$!{basicColumn.columnClassName} != null and $!{basicColumn.columnClassName}>-1" >
+                $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}},
+            </if>
+    #else
+            $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}},
+    #end
+
+#end
+            $!{deleteFlagColumn.columnSQLName} = 1
+        </set>
+        <where>
+            $!{pkColumn.columnSQLName} = #{$!{pkColumn.columnPropertyName},jdbcType=$!{pkColumn.columnSQLJDBCNameTypeAllCap}}
+            AND $!{deleteFlagColumn.columnSQLName} = 1
+        </where>
+        </if>
+    </update>
+
+    <!-- 逻辑删除 $!{tableComment} -->
+    <update id="deleteByID" parameterType="$!{packageBasePath}.domain.$!{domainClassNameEN}" >
+        <if test="_parameter != null and $!{pkColumn.columnClassName} != null">
+            UPDATE $!{domainPropertyNameEN}
+            <set>
+                $!{deleteFlagColumn.columnSQLName} = 0
+            </set>
+            <where>
+                $!{pkColumn.columnSQLName} = #{$!{pkColumn.columnPropertyName},jdbcType=$!{pkColumn.columnSQLJDBCNameTypeAllCap}}
+                AND $!{deleteFlagColumn.columnSQLName} = 1
+            </where>
+        </if>
+    </update>
+
+    <!-- 根据主键批量删除$!{tableComment}（逻辑删除） -->
+    <update id="deleteBatchByIDList" parameterType="java.util.List" >
+        <if test="_parameter != null">
+            UPDATE $!{domainPropertyNameEN}
+            <set>
+                $!{deleteFlagColumn.columnSQLName} = 0
+            </set>
+            <where>
+                $!{pkColumn.columnSQLName} in
+                <foreach collection="$!{domainClassNameEN}s" item = "$!{domainClassNameEN}" open="(" separator="," close=")">
+                    #{$!{domainClassNameEN}.$!{pkColumn.columnPropertyName},jdbcType=$!{pkColumn.columnSQLJDBCNameTypeAllCap}}
+                </foreach>
+                AND $!{deleteFlagColumn.columnSQLName} = 1
+            </where>
+        </if>
+    </update>
+
+
+
+    <!-- 根据条件查询$!{tableComment} -->
+    <select id="select" resultMap="BaseResultMap" parameterType="$!{packageBasePath}.domain.$!{domainClassNameEN}" >
+        SELECT
+            $!{pkColumn.columnSQLName},
+#foreach(${basicColumn} in ${basicColumnList})
+            $!{basicColumn.columnSQLName},
+#end
+            $!{deleteFlagColumn.columnSQLName}
+        FROM
+            $!{domainPropertyNameEN}
+        <where>
+            $!{deleteFlagColumn.columnSQLName} = 1
+#foreach(${basicColumn} in ${basicColumnList})
+#if($!{basicColumn.columnType}=="String")
+            <if test="$!{basicColumn.columnClassName} != null and $!{basicColumn.columnClassName} != ''" >
+                AND $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}}
+            </if>
+#elseif($!{basicColumn.columnType}=="Integer")
+            <if test="$!{basicColumn.columnClassName} != null and $!{basicColumn.columnClassName} > -1" >
+                AND $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}}
+            </if>
+#else
+            <if test="$!{basicColumn.columnClassName} != null" >
+                AND $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}}
+            </if>
+#end
+#end
+            <if test="$!{pkColumn.columnClassName} != null" >
+                AND $!{pkColumn.columnSQLName} = #{$!{pkColumn.columnPropertyName},jdbcType=$!{pkColumn.columnSQLJDBCNameTypeAllCap}}
+            </if>
+
+        </where>
+    </select>
+
+    <!-- 根据条件查询$!{tableComment}数量 -->
+    <select id="selectCount" resultType="java.lang.Integer"  parameterType="$!{packageBasePath}.domain.$!{domainClassNameEN}" >
+        SELECT
+            COUNT(1)
+        FROM
+            $!{domainPropertyNameEN}
+        <where>
+            $!{deleteFlagColumn.columnSQLName} = 1
+            #foreach(${basicColumn} in ${basicColumnList})
+                #if($!{basicColumn.columnType}=="String")
+                    <if test="$!{basicColumn.columnClassName} != null and $!{basicColumn.columnClassName} != ''" >
+                        AND $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}}
+                    </if>
+                #elseif($!{basicColumn.columnType}=="Integer")
+                    <if test="$!{basicColumn.columnClassName} != null and $!{basicColumn.columnClassName} > -1" >
+                        AND $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}}
+                    </if>
+                #else
+                    <if test="$!{basicColumn.columnClassName} != null" >
+                        AND $!{basicColumn.columnSQLName} = #{$!{basicColumn.columnPropertyName},jdbcType=$!{basicColumn.columnSQLJDBCNameTypeAllCap}}
+                    </if>
+                #end
+            #end
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profilesXml xmlns="http://maven.apache.org/PROFILES/1.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/PROFILES/1.0.0 http://maven.apache.org/xsd/profiles-1.0.0.xsd">
+    <profiles>
+        <!--开发环境-->
+        <profile>
+            <id>development-web</id>
+            <properties>
+                <!--日志-->
+                <code-micmsg.log.level>DEBUG</code-micmsg.log.level>
+                <code-micmsg.log.path>d:/autocodelogs</code-micmsg.log.path>
+                <!--数据源-->
+                <code-micmsg.jdbc.driver>com.mysql.jdbc.Driver</code-micmsg.jdbc.driver>
+                <code-micmsg.jdbc.url>jdbc:mysql://127.0.0.1:3306/autocode</code-micmsg.jdbc.url>
+                <code-micmsg.jdbc.username>root</code-micmsg.jdbc.username>
+                <code-micmsg.jdbc.password>123456</code-micmsg.jdbc.password>
+            </properties>
+        </profile>
+    </profiles>
+</profilesXml>

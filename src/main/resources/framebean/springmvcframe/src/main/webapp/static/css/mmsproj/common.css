@@ -1,0 +1,107 @@
+/* 文本超出部分显示省略号的样式 */
+.txt_ellipsis {
+    overflow: hidden; /*超出的部分隐藏起来。*/
+    white-space: nowrap; /*不显示的地方用省略号...代替*/
+    text-overflow: ellipsis; /* 支持 IE */
+    -o-text-overflow: ellipsis; /*支持 Opera */
+}
+
+.table-ellipsis th, .table-ellipsis td {
+    overflow: hidden; /*超出的部分隐藏起来。*/
+    white-space: nowrap; /*不显示的地方用省略号...代替*/
+    text-overflow: ellipsis; /* 支持 IE */
+    -o-text-overflow: ellipsis; /*支持 Opera */
+}
+
+.table-ellipsis {
+    table-layout: fixed;
+}
+
+.body {
+    width: 99%;
+    min-height: 95%;
+    margin: auto;
+    padding-top: 2px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.blue a {
+    color: white;
+}
+
+/**Bootstrap验证样式冲突，在此修改**/
+.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: 60px;
+}
+
+.bg-color-red {
+    /*background-color: red;*/
+    background-color: #e53e41;
+    color: #fff !important;
+    font-weight: 400 !important;
+    font-size: 14px!important;
+}
+
+.bg-color-green {
+    /*background-color: green;*/
+    background-color: #5cb85c;
+    color: #fff !important;
+    font-weight: 400 !important;
+    font-size: 14px!important;
+}
+
+.display-none {
+    display: none;
+}
+.bootbox-alert-width {
+    width: auto;
+}
+.bootbox-alert-width .modal-dialog {
+    width: 397px!important;
+}
+.bootbox-alert-width5 .modal-dialog {
+    width: 500px!important;
+}
+.readonly-bg-color {
+background-color: #eee!important;
+}
+.self-table {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+}
+.self-table th {
+    background:#b5cfd2 url('../images/cell-blue.jpg');
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+}
+.self-table td {
+    background:#dcddc0 url('../images/cell-grey.jpg');
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+}

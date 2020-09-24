@@ -1,0 +1,24 @@
+##################################
+## 模板管理首页
+##author：zhaoming
+##################################
+#set($layout = "layout/default.vm")
+<script type="text/javascript" src="#springUrl('')/js/basic/template/template-index.js"></script>
+
+
+<div id="container" class="w-frame clearfix">
+    <div id="content-frame">
+        <div class="crumbs mb15">
+            <ol>
+                <li class="pre"><a href="javascript:void(0);">基础信息<i></i></a></li>
+                <li class="cur"><a href="javascript:void(0);">模板管理<i></i></a></li>
+            </ol>
+        </div>
+        <div class="fieldset">
+            <div class="legend">模板管理</div>
+            <div class="fieldCon">
+                <div id="ordertable"></div>
+            </div>
+        </div>
+    </div>
+</div>

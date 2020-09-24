@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>SyntaxHighlighter Build Test Page</title>
+    <script type="text/javascript" src="scripts/shCore.js"></script>
+    <script type="text/javascript" src="scripts/shBrushBash.js"></script>
+    <script type="text/javascript" src="scripts/shBrushCpp.js"></script>
+    <script type="text/javascript" src="scripts/shBrushCSharp.js"></script>
+    <script type="text/javascript" src="scripts/shBrushCss.js"></script>
+    <script type="text/javascript" src="scripts/shBrushDelphi.js"></script>
+    <script type="text/javascript" src="scripts/shBrushDiff.js"></script>
+    <script type="text/javascript" src="scripts/shBrushGroovy.js"></script>
+    <script type="text/javascript" src="scripts/shBrushJava.js"></script>
+    <script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="scripts/shBrushPhp.js"></script>
+    <script type="text/javascript" src="scripts/shBrushPlain.js"></script>
+    <script type="text/javascript" src="scripts/shBrushPython.js"></script>
+    <script type="text/javascript" src="scripts/shBrushRuby.js"></script>
+    <script type="text/javascript" src="scripts/shBrushScala.js"></script>
+    <script type="text/javascript" src="scripts/shBrushSql.js"></script>
+    <script type="text/javascript" src="scripts/shBrushVb.js"></script>
+    <script type="text/javascript" src="scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/shThemeDefault.css"/>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.clipboardSwf = 'scripts/clipboard.swf';
+        SyntaxHighlighter.config.strings = {
+
+            expandSource : '展开代码',
+
+            viewSource : '查看代码',
+
+            copyToClipboard : '复制代码',
+
+            copyToClipboardConfirmation : '代码复制成功',
+
+            print : '打印',
+
+            help: '?',
+
+            alert: '语法高亮\n\n',
+
+            noBrush: '不能找到刷子: ',
+
+            brushNotHtmlScript: '刷子没有配置html-script选项',
+
+            aboutDialog: '<div></div>'
+
+        };
+        SyntaxHighlighter.all();
+    </script>
+</head>
+
+<body >
+<h1>SyntaxHihglighter Test</h1>
+<p>This is a test file to insure that everything is working well.</p>
+
+<pre class="brush: java;">
+function test() : String
+{
+	return 10;
+}
+package $!{packagePath}.dao;
+
+import $!{packagePath}.domain.$!{tableClassNameEN};
+
+import java.util.List;
+
+/**
+ * $!{tableNameCH}Dao层接口类
+ * User: $!{author}
+ * DateTime: $!{dateTime}
+ **/
+public interface $!{tableClassNameEN}Dao {
+
+    /**
+     * 新增$!{tableNameCH}
+     * @param $!{tablePropertyNameEN} $!{tableNameCH}Domain
+     */
+    public boolean insert($!{tableClassNameEN} $!{tablePropertyNameEN});
+
+    /**
+     * 修改$!{tableNameCH}
+     * @param $!{tablePropertyNameEN} $!{tableNameCH}Domain
+     */
+    public boolean updateByPrimaryKey($!{tableClassNameEN} $!{tablePropertyNameEN});
+
+    /**
+     * 根据主键删除$!{tableNameCH}
+     * @param $!{tablePropertyNameEN} $!{tableNameCH}Domain
+     */
+    public boolean deleteByPrimaryKey($!{tableClassNameEN} $!{tablePropertyNameEN});
+
+    /**
+     * 根据主键查询$!{tableNameCH}
+     * @param $!{tablePropertyNameEN} $!{tableNameCH}Domain
+     * @return $!{tableNameCH}
+     */
+    public $!{tableClassNameEN} selectByPrimaryKey($!{tableClassNameEN} $!{tablePropertyNameEN});
+
+    /**
+     * 查询$!{tableNameCH}列表
+     * @param pageBean 分页实体对象
+     * @param $!{tablePropertyNameEN} $!{tableNameCH}Domain
+     * @return $!{tableNameCH}列表
+     */
+    public PageBean<$!{tableClassNameEN}> pageQuery(PageBean pageBean, $!{tableClassNameEN} $!{tablePropertyNameEN});
+
+}
+
+</pre>
+</html>

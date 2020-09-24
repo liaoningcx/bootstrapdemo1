@@ -1,0 +1,95 @@
+package $!{packageBasePath}.service.impl;
+
+import com.auto.common.Page;
+
+import $!{packageBasePath}.domain.$!{domainClassNameEN};
+import $!{packageBasePath}.service.$!{domainClassNameEN}Service;
+import $!{packageBasePath}.dao.$!{domainClassNameEN}Dao;
+
+//功能实现类
+#if(${extendsClassList})
+    #foreach(${extendsClass} in ${extendsClassList})
+import ${extendsClass.packageBasePath}.${extendsClass.className};
+    #end
+#end
+import org.springframework.stereotype.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
+/**
+ * $!{tableComment}Service层实现类
+ * User: $!{author}
+ * DateTime: $!{makeDateTime}
+ **/
+@Service
+public class $!{domainClassNameEN}ServiceImpl implements $!{domainClassNameEN}Service {
+
+    @Autowired
+    private $!{domainClassNameEN}Dao $!{domainPropertyNameEN}Dao;
+
+    /**
+     * 新增$!{tableComment}
+     * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+     */
+    @Override
+    public void insert($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        $!{domainPropertyNameEN}Dao.insert($!{domainPropertyNameEN});
+    }
+
+    /**
+     * 修改$!{tableComment}
+     * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+     */
+    @Override
+    public void updateByID($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        $!{domainPropertyNameEN}Dao.updateByID($!{domainPropertyNameEN});
+    }
+
+    /**
+     * 根据主键删除$!{tableComment}
+     * @param $!{domainPropertyNameEN}$!{pkColumn.columnClassName} $!{tableComment}Domain
+     */
+    @Override
+    public void deleteByID($!{pkColumn.columnClassType} $!{domainPropertyNameEN}$!{pkColumn.columnClassName}) throws Exception{
+        $!{domainPropertyNameEN}Dao.deleteByID($!{domainPropertyNameEN}$!{pkColumn.columnClassName});
+    }
+
+    /**
+     * 根据主键批量删除$!{tableComment}
+     * @param $!{domainPropertyNameEN}List $!{tableComment}Domain集合
+     */
+    @Override
+    public void deleteBatchByIDList(List<$!{domainClassNameEN}> $!{domainPropertyNameEN}List) throws Exception{
+        $!{domainPropertyNameEN}Dao.deleteBatchByIDList($!{domainPropertyNameEN}List);
+    }
+
+    /**
+     * 查询$!{tableComment}列表
+     * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+     * @return $!{tableComment}列表
+     */
+    @Override
+    public List<$!{domainClassNameEN}> select( $!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        return $!{domainPropertyNameEN}Dao.select($!{domainPropertyNameEN});
+    }
+
+    /**
+    * 分页查询$!{tableComment}列表
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    * @return $!{tableComment}列表
+    */
+    @Override
+    public Page<$!{domainClassNameEN}> find$!{domainClassNameEN}Page($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception{
+        Page<$!{domainClassNameEN}> $!{domainPropertyNameEN}Page = new Page<$!{domainClassNameEN}>();
+        int count = $!{domainPropertyNameEN}Dao.selectCount($!{domainPropertyNameEN});
+        if(count>0){
+            $!{domainPropertyNameEN}Page.setTotalRow(count);
+            $!{domainPropertyNameEN}Page.refresh();
+            $!{domainPropertyNameEN}Page.setResult($!{domainPropertyNameEN}Dao.select($!{domainPropertyNameEN}));
+            return $!{domainPropertyNameEN}Page;
+        }else {
+            return null;
+        }
+    }
+}

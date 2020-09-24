@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MysqlMetadataGeneratorDao" >
+    <resultMap id="BaseResultMap" type="com.mic.generator.beforedomain.analyzer.mysql.ColumnGenerator" >
+        <result column="TABLE_SCHEMA" property="tableSchema" jdbcType="VARCHAR" />                                          <!-- 数据库名 -->
+        <result column="TABLE_NAME" property="tableSqlName" jdbcType="VARCHAR" />                                              <!-- 表名 -->
+        <result column="COLUMN_NAME" property="columnName" jdbcType="VARCHAR" />                                            <!-- 字段名 -->
+        <result column="DATA_TYPE" property="dataType" jdbcType="VARCHAR" />                                                <!-- 数据类型 -->
+        <result column="COLUMN_KEY" property="columnKey" jdbcType="VARCHAR" />                                              <!-- 主键 -->
+        <result column="EXTRA" property="extra" jdbcType="VARCHAR" />                                                       <!-- 主键策略 -->
+        <result column="COLUMN_COMMENT" property="columnComment" jdbcType="VARCHAR" />                                      <!-- 字段备注 -->
+    </resultMap>
+
+    <!-- 查询数据库列表 -->
+    <select id="selectDatabase" resultMap="BaseResultMap">
+        SELECT TABLE_SCHEMA FROM COLUMNS
+        <where>
+            <![CDATA[ TABLE_SCHEMA <> 'information_schema' ]]>
+        </where>
+        GROUP BY TABLE_SCHEMA
+    </select>
+
+    <!-- 根据数据库名查询所有表 -->
+    <select id="selectTableNames" resultMap="BaseResultMap" parameterType="com.mic.generator.beforedomain.analyzer.mysql.ColumnGenerator">
+        SELECT TABLE_NAME FROM COLUMNS
+        <where>
+            TABLE_SCHEMA = #{tableSchema,jdbcType=VARCHAR}
+        </where>
+        GROUP BY TABLE_NAME
+    </select>
+
+    <!-- 根据数据库名查询所有字段 -->
+    <select id="selectColumnNames" resultMap="BaseResultMap" parameterType="com.mic.generator.beforedomain.analyzer.mysql.ColumnGenerator">
+        SELECT
+            TABLE_SCHEMA,
+            TABLE_NAME,
+            COLUMN_NAME,
+            DATA_TYPE,
+            COLUMN_KEY,
+            EXTRA,
+            COLUMN_COMMENT
+        FROM COLUMNS
+        <where>
+            TABLE_NAME = #{tableSqlName,jdbcType=VARCHAR}
+            AND TABLE_SCHEMA = #{tableSchema,jdbcType=VARCHAR}
+        </where>
+    </select>
+</mapper>

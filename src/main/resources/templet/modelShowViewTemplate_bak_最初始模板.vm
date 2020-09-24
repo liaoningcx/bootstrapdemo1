@@ -1,0 +1,54 @@
+<div id="right-content">
+    <div class="steps mb10">
+        <ul class="steps-1 clearfix">
+            <li class=""><a href="#">自动工程看看好使不查询</a></li>
+        </ul>
+    </div>
+    <div class="data-table">
+        <div class="date-table-top" style="height:auto;">
+            <form id="toCodeForm" method="post" onsubmit="return   false ">
+                <table>
+                    #set ($i=0)
+                    <tr id="TcTr">
+                    #foreach(${basicColumn} in ${basicColumnList})
+                        #if($i==3)
+                            </tr>
+                            <tr>
+                        #end
+                        <td class="textRW"> $!{basicColumn.columnSQLComment}：</td>
+                        <td class="textL" width="200">
+                            <input type="text" class="textField28" id="txt$!{basicColumn.columnClassName}" name="txt$!{basicColumn.columnClassName}"/>
+                        </td>
+                        #set($i=$i+1)
+                    #end
+                    </tr>
+                    <tr>
+                        <td>
+                            <a id="btn_search" class="btn btn-success" href="#">查 询</a>
+                        </td>
+                        <td>
+                            <a id="btn_add" class="btn btn-success" href="/showIns$!{domainClassNameEN}View">新 建</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <table class="date-table-grid style-2 gridRows" id="grid-table">
+            <thead>
+            <th class="first" width="50">操作</th>
+        #foreach(${basicColumn} in ${basicColumnList})
+            <th width="50">$!{basicColumn.columnSQLComment}</th>
+        #end
+            <th style="display:none;">id</th>
+            </thead>
+            <tbody id="tbodyGrid" align="left">
+            </tbody>
+        </table>
+        <div id="pageDiv" class="page">
+            分页
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="#springUrl('')/static/js/common/page-bar.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/$!{domainPropertyNameEN}/$!{domainPropertyNameEN}View.js"></script>

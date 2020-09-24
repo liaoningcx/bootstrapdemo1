@@ -1,0 +1,42 @@
+##################################
+## PDM代码生成
+##author：zhaoming
+##################################
+#set($layout = "layout/default.vm")
+<!--验证js start-->
+<script type="text/javascript" src="#springUrl('')/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/jquery.metadata.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/jquery.cluetip.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/jquery.validate_msg_cn.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/validate_customer_extend.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/jquery.json-2.2.min.js"></script>
+
+<script type="text/javascript" src="#springUrl('')/js/analyzer/pdm/pdm-generation-index.js"></script>
+
+
+<div id="container" class="w-frame clearfix">
+    <div id="content-frame">
+        <div class="crumbs mb15">
+            <ol>
+                <li class="pre"><a href="javascript:void(0);">代码生成<i></i></a></li>
+                <li class="cur"><a href="javascript:void(0);">PDM生成<i></i></a></li>
+            </ol>
+        </div>
+    </div>
+    <div class="fieldset">
+        <div class="legend">数据类型映射</div>
+        <div class="fieldCon">
+            <div>
+                <form id="myform" name="myform" method="post" >
+                    <input type="text" id="test" name="test" value=""/>
+                </form>
+            </div>
+            <br>
+            <div class="textR">
+                <button type="button" class="btn btnM mr20" onclick="ajaxSubmitTest()"><s><b><span>异步提交测试</span></b></s></button>
+                <button type="button" class="btn btnM mr20" onclick="formSubmitTest()"><s><b><span>表单提交测试</span></b></s></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+##################################
+## 数据类型映射
+##author：zhaoming
+##################################
+#set($layout = "layout/default.vm")
+<script type="text/javascript" src="#springUrl('')/js/basic/mapping/data-type-mapping.js"></script>
+
+
+<div id="container" class="w-frame clearfix">
+    <div id="content-frame">
+        <div class="crumbs mb15">
+            <ol>
+                <li class="pre"><a href="javascript:void(0);">基础信息<i></i></a></li>
+                <li class="cur"><a href="javascript:void(0);">数据类型映射<i></i></a></li>
+            </ol>
+        </div>
+        <div class="fieldset">
+            <div class="legend">数据类型映射</div>
+            <div class="fieldCon">
+                <div id="ordertable"></div>
+                <br>
+                <div class="textR">
+                    <button type="button" class="btn btnM mr20" onclick="update()"><s><b><span>确认</span></b></s></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

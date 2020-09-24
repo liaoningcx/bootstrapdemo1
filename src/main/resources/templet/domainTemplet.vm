@@ -1,0 +1,59 @@
+package $!{packageBasePath}.domain;
+
+import java.util.Date;
+import java.math.BigDecimal;
+import java.io.Serializable;
+
+/**
+ * $!{tableComment}Domain
+ * User: $!{author}
+ * Date: $!{makeDateTime}
+ **/
+public class $!{domainClassNameEN} implements Serializable {
+
+    private static final long serialVersionUID = -$!{radomMathInt}L;
+
+    /**
+     * 主键 $!{pkColumn.columnSQLComment}
+     */
+    private $!{pkColumn.columnClassType} $!{pkColumn.columnPropertyName};
+
+    /**
+    * 逻辑删除标识 $!{deleteFlagColumn.columnSQLComment}
+    */
+    private $!{deleteFlagColumn.columnClassType} $!{deleteFlagColumn.columnPropertyName};
+
+#foreach(${basicColumn} in ${basicColumnList})
+    /**
+    * $!{basicColumn.columnSQLComment}
+    */
+    private $!{basicColumn.columnClassType} $!{basicColumn.columnPropertyName};
+#end
+
+
+    public $!{pkColumn.columnClassType} get$!{pkColumn.columnClassName}() {
+        return $!{pkColumn.columnPropertyName};
+    }
+
+    public void set$!{pkColumn.columnClassName}($!{pkColumn.columnClassType} $!{pkColumn.columnPropertyName}) {
+        this.$!{pkColumn.columnPropertyName} = $!{pkColumn.columnPropertyName};
+    }
+
+    public $!{deleteFlagColumn.columnClassType} get$!{deleteFlagColumn.columnClassName}() {
+        return $!{deleteFlagColumn.columnPropertyName};
+    }
+
+    public void set$!{deleteFlagColumn.columnClassName}($!{deleteFlagColumn.columnClassType} $!{deleteFlagColumn.columnPropertyName}) {
+        this.$!{deleteFlagColumn.columnPropertyName} = $!{deleteFlagColumn.columnPropertyName};
+    }
+
+#foreach(${basicColumn} in ${basicColumnList})
+    public $!{basicColumn.columnClassType} get$!{basicColumn.columnClassName}() {
+        return $!{basicColumn.columnPropertyName};
+    }
+
+    public void set$!{basicColumn.columnClassName}($!{basicColumn.columnClassType} $!{basicColumn.columnPropertyName}) {
+        this.$!{basicColumn.columnPropertyName} = $!{basicColumn.columnPropertyName};
+    }
+#end
+}

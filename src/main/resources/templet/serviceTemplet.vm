@@ -1,0 +1,61 @@
+package $!{packageBasePath}.service;
+
+import com.auto.common.Page;
+
+import $!{packageBasePath}.domain.$!{domainClassNameEN};
+
+//功能实现类
+#if(${extendsClassList})
+    #foreach(${extendsClass} in ${extendsClassList})
+    import ${extendsClass.packageBasePath}.${extendsClass.className};
+    #end
+#end
+
+import java.util.List;
+
+/**
+* $!{tableComment}Service层接口类
+* User: $!{author}
+* DateTime: $!{makeDateTime}
+**/
+public interface $!{domainClassNameEN}Service {
+
+    /**
+    * 新增$!{tableComment}
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    */
+    public void insert($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+    /**
+    * 修改$!{tableComment}
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    */
+    public void updateByID($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+    /**
+    * 根据主键删除$!{tableComment}
+    * @param $!{domainPropertyNameEN}$!{pkColumn.columnClassName} $!{tableComment}Domain
+    */
+    public void deleteByID($!{pkColumn.columnClassType} $!{domainPropertyNameEN}$!{pkColumn.columnClassName}) throws Exception;
+
+    /**
+    * 根据主键批量删除$!{tableComment}
+    * @param $!{domainPropertyNameEN}List $!{tableComment}Domain集合
+    */
+    public void deleteBatchByIDList(List<$!{domainClassNameEN}> $!{domainPropertyNameEN}List) throws Exception;
+
+    /**
+    * 查询$!{tableComment}列表
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    * @return $!{tableComment}列表
+    */
+    public List<$!{domainClassNameEN}> select( $!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+    /**
+    * 分页查询$!{tableComment}列表
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    * @return $!{tableComment}列表
+    */
+    public Page<$!{domainClassNameEN}> find$!{domainClassNameEN}Page( $!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>自动项目页标题</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <link href="#springUrl('/static/css/bootstrap.css')" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="#springUrl('/static/css/font-awesome.min.css')"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="#springUrl('/static/css/font-awesome-ie7.min.css')"/>
+    <![endif]-->
+    <link rel="stylesheet" href="#springUrl('/static/css/ace.min.css')"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="#springUrl('/static/css/ace-ie.min.css')"/>
+    <![endif]-->
+    <script type="text/javascript" src="#springUrl('/static/js/lib/jquery-1.10.2.min.js')"></script>
+    <script type="text/javascript" src="#springUrl('/static/js/lib/bootstrap.min.js')"></script>
+    <script src="#springUrl('/static/js/lib/jquery.jqGrid.min.js')"></script>
+    <script src="#springUrl('/static/js/lib/ace.min.js')"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="#springUrl('/static/js/lib/html5shiv.js')"></script>
+    <script src="#springUrl('/static/js/lib/respond.min.js')"></script>
+    <![endif]-->
+
+</head>
+<script>
+    $(function () {
+        $(".module").on("click", function () {
+            $(".active").removeClass("active");
+            $(this).parent().addClass("active");
+        });
+    });
+</script>
+<body style="overflow-x:hidden;">
+<div class="navbar navbar-default" id="navbar">
+
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="icon-leaf"></i>
+                    耗材仓库作业端
+                </small>
+            </a><!-- /.brand -->
+
+        </div>
+        <div class="navbar-header pull-right">
+            <a href="/logout" class="navbar-brand">
+
+                <font size="3"><i class="icon-off"></i>退出</font>
+            </a>
+        </div>
+        <!-- /.navbar-header -->
+    </div>
+    <!-- /.container -->
+</div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <div class="container-fluid">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('sidebar', 'fixed')
+                } catch (e) {
+                }
+            </script>
+            <ul class="nav nav-list">
+                <li class="open">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text">业务操作</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu" style="display: block;">
+                        <li class="active">
+                            <a class="module" href="#springUrl('/ib/gotoIbMainSearch.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                新建入库单
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/check/gotoCheck.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                验收
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/upcarriage/gotoUpcarriage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                上架
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/stock/gotoStock.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                               库存查询
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/move/gotoMove.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                移库
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/checkStock/gotoCheckStock.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                盘点
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/auditing/gotoAuditingPage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                盘盈亏审核
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="module" href="#springUrl('/obList/gotoObList.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                订单出库(按订单)
+                            </a>
+                        </li>
+						
+						<li>
+                            <a class="module" href="#springUrl('/ibMainReport/gotoIbMainReportPage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                               入库报表
+                            </a>
+                        </li>
+						
+						<li>
+                            <a class="module" href="#springUrl('/iboReport/gotoIboReportPage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                               出库报表
+                            </a>
+                        </li>
+                        <li>
+                            <a class="module" href="#springUrl('#')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                接收模板
+                            </a>
+                        </li>
+                        <li>
+                            <a class="module" href="#springUrl('#')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                子库存转移模板
+                            </a>
+                        </li>
+                        <li>
+                            <a class="module" href="#springUrl('#')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                组织间转移模板
+                            </a>
+                        </li>
+                        <li>
+                            <a class="module" href="#springUrl('#')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                杂项出库模板
+                            </a>
+                        </li>
+                        <li>
+                            <a class="module" href="#springUrl('#')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                杂项入库模板
+                            </a>
+                        </li>
+                        <li>
+                            <a class="module" href="#springUrl('#')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                采购单传入
+                            </a>
+                        </li>
+                        #*
+                        <li>
+                            <a class="module" href="#springUrl('/pickBySku/gotoIboPickBySku.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                内配单单出库(暂停使用)
+                            </a>
+                        </li>
+                        *#
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-file-alt"></i>
+                        <span class="menu-text">基础资料</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu">
+
+                        <li class="active">
+                            <a href="#springUrl('/zone/gotoZonePage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                储区管理
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#springUrl('/cell/gotoCellPage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                储位管理
+                            </a>
+                        </li>
+                        #*
+                        <li>
+                            <a href="#springUrl('/goodsSequence/gotoGoodsSequencePage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                序列号管理
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#springUrl('/userUMPMiniwms/gotoUserUMPMiniwmsPage.do')" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                报警人员管理
+                            </a>
+                        </li>*#
+                    </ul>
+                </li>
+                </ul>
+            <!-- /.nav-list -->
+        </div>
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-13">
+                        <iframe name="mainFrame" id="mainFrame" frameborder='0' width='95%' height='860px'
+                                src="#springUrl('/ib/gotoIbMainSearch.do')" style="overflow-y: auto;"/>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.page-content -->
+        </div>
+        <!-- /.main-content -->
+    </div>
+    <!-- /.main-container-inner -->
+</div>
+<!-- /.main-container -->
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='\'#springUrl('/static/js/lib/jquery-2.0.3.min.js')\''>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='\'#springUrl('/static/js/lib/jquery-1.10.2.min.js')\''>" + "<" + "/script>");
+</script>
+<![endif]-->
+</body>
+</html>
+

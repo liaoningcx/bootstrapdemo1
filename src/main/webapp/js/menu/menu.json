@@ -1,0 +1,11 @@
+[
+	{"value":"首页","url":"/index","selected":true},
+    {"value":"基础信息","url":"javascript:void(0);","children":[
+        {"value":"数据类型映射","url":"/dataTypeMapping/index"},
+        {"value":"工具类管理","url":"/toolsManagement/index"},
+        {"value":"模板管理","url":"/template/index"}
+    ]},
+    {"value":"代码生成","url":"javascript:void(0);","children":[
+        {"value":"MYSQL元数据生成","url":"/mysqlMetadataGenerator/index"}
+    ]}
+]

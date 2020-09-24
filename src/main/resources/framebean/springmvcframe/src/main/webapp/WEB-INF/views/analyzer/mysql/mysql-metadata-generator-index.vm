@@ -1,0 +1,83 @@
+##################################
+## MYSQL元数据代码生成页面
+##author：zhaoming
+##################################
+#set($layout = "layout/default.vm")
+<script type="text/javascript" src="#springUrl('')/js/analyzer/mysql/mysql-metadata-generator-index.js"></script>
+
+<form id="generatorForm" name="generatorForm" action="" method="post">
+<div id="container" class="w-frame clearfix">
+    <div id="content-frame">
+        <div class="crumbs mb15">
+            <ol>
+                <li class="pre"><a href="javascript:void(0);">基础信息<i></i></a></li>
+                <li class="cur"><a href="javascript:void(0);">代码生成<i></i></a></li>
+            </ol>
+        </div>
+        <div class="fieldset">
+            <div class="legend">代码生成</div>
+            <div class="fieldCon">
+                <input type="hidden" id="mysqlMetadataGeneratorJson" name="mysqlMetadataGeneratorJson">
+                <table class="table-0">
+                    <tbody>
+                    <tr>
+                        <td class="textR" width="100"><label>数据库信息：</label></td>
+                        <td class="textL" width="200">
+                            <select class="select18 {required:true,messages:{required:'请选择数据库信息！'}}" id="tableSchema" name="tableSchema">
+                                <option value="">请选择</option>
+                                #foreach($!{columnGenerator} in $!{columnGeneratorList})
+                                    <option value="$!{columnGenerator.tableSchema}">$!{columnGenerator.tableSchema}</option>
+                                #end
+                            </select>
+                        </td>
+                        <td class="textR" width="100"><label>表信息：</label></td>
+                        <td class="textL" width="200">
+                            <select class="select18 {required:true,messages:{required:'请选择表信息！'}}" id="tableSqlName" name="tableSqlName">
+                                <option value="">请选择</option>
+                            </select>
+                        </td>
+                        <td class="textR" width="100"><label>表描述信息：</label></td>
+                        <td class="textL" width="200">
+                            <input type="text" name="tableComment" id="tableComment" class="textField18  {required:true,messages:{required:'请填写表描述信息！'}}">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div id="ordertable"></div>
+                <br>
+                <table class="table-0">
+                    <tbody>
+                    <tr>
+                        <td class="textR" width="100"><label>创建人：</label></td>
+                        <td class="textL" width="200">
+                            <input type="text" name="author" id="author" class="textField18  {required:true,messages:{required:'请填写创建人信息！'}}">
+                        </td>
+                        <td class="textR" width="100"><label>包路径：</label></td>
+                        <td class="textL" width="500" colspan="3">
+                            <input type="text" name="packagePath" id="packagePath" class="textField18  {required:true,messages:{required:'请填写包路径信息！'}}" style="width: 300px">  <font style="color: #ff0000">例：com.mic.test</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textR" width="100"><label>生成类型：</label></td>
+                        <td class="textL" width="200">
+                            <input type="radio" name="generatorType" id="generatorType1" value="1" checked> 压缩包下载
+                            <input type="radio" name="generatorType" id="generatorType2" value="2"> 导入工程
+                        </td>
+                        <td class="textR" width="100"><label>工程目录：</label></td>
+                        <td class="textL" width="500" colspan="3">
+                            <input type="text" name="projectDirectory" id="projectDirectory" class="textField18  {required:true,messages:{required:'请填写工程目录！'}}" style="width: 300px" disabled="disabled"> <font style="color: #ff0000">例：c:/project-name</font>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div class="textC">
+                    <button type="button" class="btn btnM mr20" onclick="generator()"><s><b><span>代码生成</span></b></s></button>
+                    <button type="button" class="btn btnM mr20" onclick="testws()"><s><b><span>test</span></b></s></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

@@ -1,0 +1,33 @@
+##################################
+## 模板管理维护页
+##author：zhaoming
+##################################
+#set($layout = "layout/default.vm")
+<script type="text/javascript" charset="utf-8" src="#springUrl('')/static/js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="#springUrl('')/static/js/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="#springUrl('')/static/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="#springUrl('')/js/basic/template/template-update.js"></script>
+
+
+<div id="container" class="w-frame clearfix">
+    <div id="content-frame">
+        <div class="crumbs mb15">
+            <ol>
+                <li class="pre"><a href="javascript:void(0);">基础信息<i></i></a></li>
+                <li class="cur"><a href="javascript:void(0);">模板维护<i></i></a></li>
+            </ol>
+        </div>
+        <div class="fieldset">
+            <div class="legend">模板维护</div>
+            <div class="fieldCon">
+                <div>
+                    <script id="editor" type="text/plain" style="width:950px;height:300px"></script>
+                </div>
+                <br>
+                <div class="textR">
+                    <button type="button" class="btn btnM mr20" onclick="save()"><s><b><span>保存</span></b></s></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

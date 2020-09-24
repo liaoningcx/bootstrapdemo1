@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataTypes>
+    <dataType databaseType="bit"     jdbcType="bit"         javaType="boolean"></dataType>
+    <dataType databaseType="blob"     jdbcType="blob"         javaType="byte[]"></dataType>
+    <dataType databaseType="bigint"     jdbcType="bigint"         javaType="Long"></dataType>
+    <dataType databaseType="char"    jdbcType="varchar"      javaType="String"></dataType>
+    <dataType databaseType="date"       jdbcType="timestamp"       javaType="Date"></dataType>
+    <dataType databaseType="datetime"    jdbcType="timestamp"       javaType="Date"></dataType>
+    <dataType databaseType="decimal"       jdbcType="decimal"         javaType="BigDecimal"></dataType>
+    <dataType databaseType="double"   jdbcType="double"         javaType="BigDecimal"></dataType>
+    <dataType databaseType="float"    jdbcType="float"   javaType="BigDecimal"></dataType>
+    <dataType databaseType="int"     jdbcType="integer"   javaType="Integer"></dataType>
+    <dataType databaseType="smallint"    jdbcType="integer"      javaType="Integer"></dataType>
+    <dataType databaseType="numeric"    jdbcType="bigint"      javaType="BigDecimal"></dataType>
+    <dataType databaseType="text"    jdbcType="varchar"   javaType="String"></dataType>
+    <dataType databaseType="timestamp"     jdbcType="timestamp"   javaType="Date"></dataType>
+    <dataType databaseType="tinyint"      jdbcType="tinyint"   javaType="Integer"></dataType>
+    <dataType databaseType="varchar"    jdbcType="varchar"   javaType="String"></dataType>
+</dataTypes>

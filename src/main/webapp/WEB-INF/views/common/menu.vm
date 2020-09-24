@@ -1,0 +1,63 @@
+#set($layout = "layout/null.vm")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link href="http://www.360buy.com/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/static/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/static/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/static/css/page.css"/>
+    <script type="text/javascript" src="#springUrl('')/static/js/jquery.js"></script>
+    <script type="text/javascript" src="#springUrl('')/static/js/main.js"></script>
+    <script type="text/javascript" src="#springUrl('')/static/js/jqModal.js"></script>
+    <script type="text/javascript" src="#springUrl('')/static/js/jqBtnSelect.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.ajax({
+                type : "get", // 你的是  post
+                url :"#springUrl('')/js/menu/menu.json",
+                //data:{"userName":"b"},  //你的 请求参数
+                dataType : 'json',
+                success : function(data) {
+                    var _menu = '<ul class="menu_lev1">';//加一级
+                    $.each(data,function(i,j){
+                        _menu+='<li><a href="'+j.url+'" class="tit_lev1 '+(j.selected?"selected":"")+'" target="main">'+j.value+'</a>';
+                        if(j.children){//有二级
+                            _menu+='<ul class="menu_lev2">';
+                            $.each(j.children,function(n,m){
+                                _menu+='<li><a href="'+m.url+'" class="tit_lev2 '+(m.selected?"selected":"")+'" target="main">'+m.value+'</a>';
+                                if(m.children){//有三级
+                                    _menu+='<ul class="menu_lev3">';
+                                    $.each(m.children,function(o,p){
+                                        _menu+='<li><a href="'+p.url+'" class="tit_lev3 '+(p.selected?"selected":"")+'" target="main">'+p.value+'</a></li>';
+                                    });
+                                    _menu+='</ul>';
+                                }//加三级结束
+                                _menu+='</li>';
+                            });
+                            _menu+='</ul>';
+                        }//加二级结束
+                        _menu+='</li>';
+                    });
+                    _menu+='</ul>';//加一级结束
+                    $('#menu').append(_menu);
+                    $('#menu a.selected').parents('ul').show();
+                    globalEvent.menu();
+                }
+            })
+        });
+    </script>
+</head>
+<body scroll="no">
+<div id="container" class="w-menu clearfix">
+    <div id="menu">
+    </div>
+</div>
+</body>
+</html>
+

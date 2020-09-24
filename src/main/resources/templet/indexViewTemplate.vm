@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>自动项目页标题</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <link href="#springUrl('/static/css/mmsproj/bootstrap.css')" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="#springUrl('/static/css/mmsproj/font-awesome.min.css')"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="#springUrl('/static/css/mmsproj/font-awesome-ie7.min.css')"/>
+    <![endif]-->
+    <link rel="stylesheet" href="#springUrl('/static/css/mmsproj/ace.min.css')"/>
+
+</head>
+<script>
+    $(function () {
+        $(".module").bind("click", function () {
+            $(".active").removeClass("active");
+            $(this).parent().addClass("active");
+        });
+    });
+</script>
+<body style="overflow-x:hidden;">
+<div class="navbar navbar-default" id="navbar">
+
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="icon-leaf"></i>
+                    自动项目看看好使不
+                </small>
+            </a><!-- /.brand -->
+
+        </div>
+        <div class="navbar-header pull-right">
+            <a href="/logout" class="navbar-brand">
+                <font size="3"><i class="icon-off"></i>退出</font>
+            </a>
+        </div>
+        <!-- /.navbar-header -->
+    </div>
+    <!-- /.container -->
+</div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <div class="container-fluid">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('sidebar', 'fixed')
+                } catch (e) {
+                }
+            </script>
+            <ul class="nav nav-list">
+                <li class="open">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text">自动业务</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                    <ul class="submenu" style="display: block;">
+                        <li class="active">
+                            <a class="module" href="#springUrl('')$!{domainPropertyNameEN}View.do" target="mainFrame">
+                                <i class="icon-double-angle-right"></i>
+                                数据体维护2？$!{domainPropertyNameEN}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.nav-list -->
+        </div>
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-13">
+                        <iframe name="mainFrame" id="mainFrame" frameborder='0' width='95%' height='860px'
+                                 style="overflow-y: auto;"/>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.page-content -->
+        </div>
+        <!-- /.main-content -->
+    </div>
+    <!-- /.main-container-inner -->
+</div>
+<!-- /.main-container -->
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='\'#springUrl('/static/js/mmsproj/lib/jquery-2.0.3.min.js')\''>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='\'#springUrl('/static/js/mmsproj/lib/jquery-1.10.2.min.js')\''>" + "<" + "/script>");
+</script>
+<![endif]-->
+</body>
+</html>
+

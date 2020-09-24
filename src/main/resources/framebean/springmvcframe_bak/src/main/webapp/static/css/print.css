@@ -1,0 +1,49 @@
+﻿/**
+ * 大家电
+ * 
+ * 打印页面
+ * 
+ * @project 360buy 
+ * @version 1.0
+ * @author  Fengweiping
+ * @copyright 2012 360buy
+ * 
+ */
+/**
+ * @subsection print
+ * 
+ */
+html body,body{
+	font-size:10px;
+}
+.box-print{
+	height:92mm;/*A4纸尺寸为  210mm*297mm*/
+	padding:0 2mm;
+}
+.box-printX4{
+	height:69mm;/*A4纸尺寸为  210mm*297mm*/
+	padding:0 2mm;
+}
+.box-print h1,.box-printX4 h1{
+	font-family:Verdana,"微软雅黑";
+	font-size:2em;
+	padding:10pt 0;
+	color:#666;
+}
+.box-print h1 img,.box-printX4 h1 img{
+	margin-right:30px;
+}
+.printGrid { border-collapse: collapse; border-spacing: 0; text-align: center; width:100%;}
+.printGrid tbody tr th,
+.printGrid tbody tr td{
+	border:1px solid #8b8b8b;
+	font-size:1.2em;
+	font-weight: normal;
+}
+.printGrid tbody tr th{
+	color:#333;
+}
+.printGrid td.trHover{border-left:1px solid #8b8b8b;}
+.noPrint{
+	display:none;
+}

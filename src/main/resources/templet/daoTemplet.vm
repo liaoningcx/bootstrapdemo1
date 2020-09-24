@@ -1,0 +1,58 @@
+package $!{packageBasePath}.dao;
+
+import $!{packageBasePath}.domain.$!{domainClassNameEN};
+
+//功能实现类
+#if(${extendsClassList})
+    #foreach(${extendsClass} in ${extendsClassList})
+    import ${extendsClass.packageBasePath}.${extendsClass.className};
+    #end
+#end
+
+import java.util.List;
+
+
+/**
+* $!{tableComment}Dao层接口类
+* User: $!{author}
+* DateTime: $!{makeDateTime}
+**/
+public interface $!{domainClassNameEN}Dao {
+    /**
+    * 添加$!{tableComment}信息
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    */
+    public boolean insert($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+    /**
+    * 通过主键修改$!{tableComment}
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    */
+    public boolean updateByID($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+    /**
+    * 根据主键删除$!{tableComment}
+    * @param $!{domainPropertyNameEN}$!{pkColumn.columnClassName} $!{tableComment}Domain
+    */
+    public boolean deleteByID($!{pkColumn.columnClassType} $!{domainPropertyNameEN}$!{pkColumn.columnClassName}) throws Exception;
+
+    /**
+    * 根据主键批量删除$!{tableComment}
+    * @param $!{domainPropertyNameEN}List $!{tableComment}Domain集合
+    */
+    public boolean deleteBatchByIDList(List<$!{domainClassNameEN}> $!{domainPropertyNameEN}List) throws Exception;
+
+    /**
+    * 查询$!{tableComment}列表
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    * @return $!{tableComment}列表
+    */
+    public List<$!{domainClassNameEN}> select( $!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+
+    /**
+    * 查询$!{tableComment}列表
+    * @param $!{domainPropertyNameEN} $!{tableComment}Domain
+    * @return $!{tableComment}列表个数
+    */
+    public int selectCount($!{domainClassNameEN} $!{domainPropertyNameEN}) throws Exception;
+}

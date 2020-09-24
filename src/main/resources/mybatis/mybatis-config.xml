@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties>
+        <property name="dialect" value="MYSQL" />
+    </properties>
+
+    <plugins>
+        <plugin interceptor="com.mic.generator.beforecommon.dao.interceptor.PaginationInterceptor" />
+    </plugins>
+
+    <mappers>
+        <!-- 基本资料 -->
+        <mapper resource="mybatis/mysql/MysqlMetadataGeneratorMapper.xml" />
+    </mappers>
+</configuration>
